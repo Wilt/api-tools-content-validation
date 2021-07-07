@@ -219,7 +219,7 @@ class ContentValidationListener implements ListenerAggregateInterface, EventMana
 
         $inputFilter = $this->getInputFilter($inputFilterService);
 
-        if ($isCollection && ! in_array($method, $this->methodsWithoutBodies)) {
+        if ($isCollection && ! in_array($method, $this->methodsWithoutBodies) && ! $inputFilter instanceof CollectionInputFilter) {
             $collectionInputFilter = new CollectionInputFilter();
             $collectionInputFilter->setInputFilter($inputFilter);
             $inputFilter = $collectionInputFilter;
